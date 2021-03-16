@@ -1,0 +1,79 @@
+﻿
+@{
+    ViewBag.Title = "FormWT";
+    var cities = new List<SelectListItem>
+    {
+        new SelectListItem{Text="Bangalore",Value="BLR"},
+        new SelectListItem{Text="Chennai",Value="CHN"},
+        new SelectListItem{Text="Delhi",Value="DLI"},
+        new SelectListItem{Text="Hyderabad",Value="HYD"},
+        new SelectListItem{Text="Jaipur",Value="JPR"}
+    };
+}
+
+<h2>Form Design using Weakly Typed Html Helper Syntaxes</h2><hr />
+@*<form action="" method="post">
+
+</form>*@
+@using (Html.BeginForm("FormWT","HelloWorld",FormMethod.Get))
+{
+<table class="table table-hover" width="50%">
+    <tr>
+        <td>
+            @*<label>Enter Ecode:</label>*@
+            @Html.Label("Enter ecode:")
+            @*@Html.Display("Enter ecode:").......... used for Object Property*@
+        </td>
+        <td>
+            @Html.TextBox("ecode");
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.Label("Enter password:")
+        </td>
+        <td>
+            @Html.Password("pwd");
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.Label("Select gender:")
+        </td>
+        <td>
+            @Html.RadioButton("gender", "M") Male
+            @Html.RadioButton("gender", "F") Female
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.Label("Select hobbies:")
+        </td>
+        <td>
+            @Html.CheckBox("hobbies", htmlAttributes: new { @value = "painting" }) Painting
+            @Html.CheckBox("hobbies", htmlAttributes: new { @value = "dancing" }) Dancing
+            @Html.CheckBox("hobbies", htmlAttributes: new { @value = "singing" }) Singing
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.Label("Select hobbies:")
+        </td>
+        <td>
+            @Html.DropDownList("city", cities, "-Select-")
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.Label("Enter address:",htmlAttributes: new { @class="btnStyle" })
+        </td>
+        <td>
+            @Html.TextArea("address",htmlAttributes: new { @rows=5, @cols=50 })
+        </td>
+    </tr>
+</table>
+<input type="submit" value="Submit" />
+}
+@Html.ActionLink("Display All Employees By Html.ActionLink","GetAllEmps","HelloWorld")
+<br />
+<a href="~/HelloWorld/GetAllEmps">Display All Employee</a>

@@ -1,0 +1,70 @@
+﻿@model MVCHelloWorld.Models.Registration
+
+@{
+    ViewBag.Title = "FormST";
+}
+
+<h2>Form Design using Strongly-Typed Html Helper Syntaxes</h2>
+<hr />
+
+@using (Html.BeginForm("FormST", "HelloWorld", FormMethod.Post))
+{
+    <table class="table table-hover" width="50%">
+        <tr>
+            <td>                
+                @Html.LabelFor(model=>model.Ecode)                
+            </td>
+            <td>
+                @Html.TextBoxFor(model=>model.Ecode)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model=>model.Password)
+            </td>
+            <td>
+                @Html.PasswordFor(model=>model.Password)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model=>model.Gender)
+            </td>
+            <td>
+                @Html.RadioButtonFor(model=>model.Gender, "M") Male
+                @Html.RadioButtonFor(model=>model.Gender, "F") Female
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model=>model.Hobbies)
+            </td>
+            <td>
+                @Html.CheckBox("SelectedHobbies", htmlAttributes: new { @value= Model.Hobbies[0].HobbyType }) Painting
+                @Html.CheckBox("SelectedHobbies", htmlAttributes: new { @value = Model.Hobbies[1].HobbyType }) Dancing
+                @Html.CheckBox("SelectedHobbies", htmlAttributes: new { @value = Model.Hobbies[2].HobbyType }) Singing
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model=>model.Cities)
+            </td>
+            <td>
+                @Html.DropDownListFor(model=>model.SelectedCity,new SelectList(Model.Cities,"Value","Text"))
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model=>model.Address, htmlAttributes: new { @class = "btnStyle" })
+            </td>
+            <td>
+                @Html.TextAreaFor(model=>model.Address, htmlAttributes: new { @rows = 5, @cols = 50 })
+            </td>
+        </tr>
+    </table>
+    <input type="submit" value="Submit" />
+}
+@Html.ActionLink("Display All Employees By Html.ActionLink", "GetAllEmps", "HelloWorld")
+<br />
+<a href="~/HelloWorld/GetAllEmps">Display All Employee</a>
+

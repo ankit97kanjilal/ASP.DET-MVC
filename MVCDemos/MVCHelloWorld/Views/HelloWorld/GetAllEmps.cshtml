@@ -1,0 +1,26 @@
+﻿@model System.Collections.Generic.IEnumerable<MVCHelloWorld.Models.Employee>
+
+@{
+    ViewBag.Title = "GetAllEmps";
+}
+
+<h2>List of Employees : </h2>
+
+<table border="1">
+    <tr>
+        <th>Ecode</th>
+        <th>Ename</th>
+        <th>Salary</th>
+        <th>Deptid</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+
+        <tr>
+            <td>@item.Ecode</td>
+            <td>@item.Ename</td>
+            <td>@item.Salary</td>
+            <td>@item.Deptid</td>
+        </tr>
+    }
+</table>
